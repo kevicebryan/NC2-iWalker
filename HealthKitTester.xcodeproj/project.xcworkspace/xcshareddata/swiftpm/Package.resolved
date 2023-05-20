@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "layer-explosion",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/louis1001/layer-explosion",
+      "state" : {
+        "branch" : "main",
+        "revision" : "be838f64b4a0e70808d4408110356e5217dcf6ee"
+      }
+    }
+  ],
+  "version" : 2
+}
