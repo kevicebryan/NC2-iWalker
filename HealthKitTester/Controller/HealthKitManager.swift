@@ -11,6 +11,14 @@ import HealthKit
 class HealthKitManager: ObservableObject {
   var healthStore = HKHealthStore()
   var stepCountToday: Int = 0
+  var caloriesBurnedToday: Int = 0
+  var thisWeekSteps: [Int: Int] = [1: 0,
+                                   2: 0,
+                                   3: 0,
+                                   4: 0,
+                                   5: 0,
+                                   6: 0,
+                                   7: 0]
 
   init() {
     requestAuthorization()
@@ -20,7 +28,7 @@ class HealthKitManager: ObservableObject {
     let toReads = Set([
       HKObjectType.quantityType(forIdentifier: .stepCount)!,
       HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
-      HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
+      HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
     ])
     guard HKHealthStore.isHealthDataAvailable() else {
       print("health data not available!")
@@ -29,22 +37,44 @@ class HealthKitManager: ObservableObject {
     healthStore.requestAuthorization(toShare: nil, read: toReads) {
       success, error in
       if success {
-        self.readStepCountToday()
+        self.fetchAllDatas()
       } else {
         print("\(String(describing: error))")
       }
     }
   }
 
+  func fetchAllDatas() {
+    print("Attempting to fetch all Datas")
+    readStepCountToday()
+    readCalorieCountToday()
+    readStepCountThisWeek()
+    print("DATAS FETCHED: ")
+    print("\(stepCountToday) steps today")
+    print("\(caloriesBurnedToday) calories today")
+    print("////////////////////////////////////////")
+  }
+
   func readStepCountToday() {
     guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
       return
     }
+
     let now = Date()
     let startDate = Calendar.current.startOfDay(for: now)
-    let predicate = HKQuery.predicateForSamples(withStart: startDate, end: now, options: .strictStartDate)
+    let predicate = HKQuery.predicateForSamples(
+      withStart: startDate,
+      end: now,
+      options: .strictStartDate
+    )
 
-    let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .cumulativeSum) {
+    print("attempting to get step count from \(startDate)")
+
+    let query = HKStatisticsQuery(
+      quantityType: stepCountType,
+      quantitySamplePredicate: predicate,
+      options: .cumulativeSum
+    ) {
       _, result, error in
       guard let result = result, let sum = result.sumQuantity() else {
         print("failed to read step count: \(error?.localizedDescription ?? "UNKNOWN ERROR")")
@@ -52,11 +82,117 @@ class HealthKitManager: ObservableObject {
       }
 
       let steps = Int(sum.doubleValue(for: HKUnit.count()))
-      DispatchQueue.main.async {
-        print("your steps today: \(steps)")
-        self.stepCountToday = steps
+      print("Fetched your steps today: \(steps)")
+      self.stepCountToday = steps
+    }
+    healthStore.execute(query)
+  }
+
+  func readCalorieCountToday() {
+    guard let calorieType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
+      return
+    }
+    let now = Date()
+    let startDate = Calendar.current.startOfDay(for: now)
+
+    let predicate = HKQuery.predicateForSamples(
+      withStart: startDate,
+      end: now,
+      options: .strictStartDate
+    )
+
+    print("attempting to get calories burned from \(startDate)")
+
+    let query = HKSampleQuery(sampleType: calorieType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, _ in
+      guard let samples = results as? [HKQuantitySample], let firstSample = samples.first else {
+        print("No calorie burn samples found.")
+        return
+      }
+
+      // Retrieve the total calories burned for today
+      let totalCalories = samples.reduce(0.0) { $0 + $1.quantity.doubleValue(for: HKUnit.kilocalorie()) }
+
+      // Process the total calories burned
+      print("Total calories burned today: \(totalCalories) kcal")
+      self.caloriesBurnedToday = Int(totalCalories)
+    }
+
+    healthStore.execute(query)
+  }
+
+  func readStepCountThisWeek() {
+    guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
+      return
+    }
+    let calendar = Calendar.current
+    let today = calendar.startOfDay(for: Date())
+    // Find the start date (Monday) of the current week
+    guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) else {
+      print("Failed to calculate the start date of the week.")
+      return
+    }
+    // Find the end date (Sunday) of the current week
+    guard let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
+      print("Failed to calculate the end date of the week.")
+      return
+    }
+
+    print("Attempting to get stepcount from \(startOfWeek) to \(endOfWeek)")
+
+    let predicate = HKQuery.predicateForSamples(
+      withStart: startOfWeek,
+      end: endOfWeek,
+      options: .strictStartDate
+    )
+
+    let query = HKStatisticsCollectionQuery(
+      quantityType: stepCountType,
+      quantitySamplePredicate: predicate,
+      options: .cumulativeSum,
+      anchorDate: startOfWeek,
+      intervalComponents: DateComponents(day: 1)
+    )
+
+    query.initialResultsHandler = { _, result, error in
+      guard let result = result else {
+        if let error = error {
+          print("An error occurred while retrieving step count: \(error.localizedDescription)")
+        }
+        return
+      }
+
+      var stepsByDay: [Int: Int] = [:]
+      // [weekday:steps]
+
+      result.enumerateStatistics(from: startOfWeek, to: endOfWeek) { statistics, _ in
+        if let quantity = statistics.sumQuantity() {
+          let steps = Int(quantity.doubleValue(for: HKUnit.count()))
+          let day = calendar.component(.day, from: statistics.startDate)
+          print("for day \(day) u have \(steps) steps!")
+          stepsByDay[day] = steps
+        }
+      }
+
+      for (day, steps) in stepsByDay {
+        print("Step count on day \(day): \(steps)")
       }
     }
     healthStore.execute(query)
   }
 }
+
+// NOTE: This query is to retrieve total step of this week:
+//    let query = HKStatisticsQuery(
+//      quantityType: stepCountType,
+//      quantitySamplePredicate: predicate,
+//      options: .cumulativeSum
+//    ) { _, result, error in
+//      guard let result = result, let sum = result.sumQuantity() else {
+//        if let error = error {
+//          print("An error occurred while retrieving step count: \(error.localizedDescription)")
+//        }
+//        return
+//      }
+//
+//      let steps = sum.doubleValue(for: HKUnit.count())
+//      print("Step count from \(startOfWeek) to \(endOfWeek): \(steps)")

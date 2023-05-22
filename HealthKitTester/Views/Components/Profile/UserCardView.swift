@@ -9,6 +9,8 @@ import SwiftUI
 
 struct UserCardView: View {
   @ObservedObject var userViewController: UserViewController
+  @State var rotateIn3D = false
+
   let user: User?
 
   init(userViewController: UserViewController) {
@@ -44,14 +46,29 @@ struct UserCardView: View {
         }
       }.padding(.trailing, 12).padding(.vertical, 20)
         .fontWeight(.semibold)
-    }.frame(width: 361, height: 261).overlay(
+        .backgroundStyle(.thinMaterial)
+    }.frame(width: Theme.cardWidth, height: 261).overlay(
       RoundedRectangle(cornerRadius: 8).stroke(.gray.opacity(0.5), lineWidth: 1)
     )
+
+    // MARK: 3D Rotation
+
+    .rotation3DEffect(.degrees(rotateIn3D ? 378 : 0),
+                      axis: (x: 0,
+                             y: 1,
+                             z: 0))
+    .scaleEffect(rotateIn3D ? 0.7 : 1)
+    .animation(.easeInOut(duration: 2.8)
+      .repeatCount(1, autoreverses: true),
+      value: rotateIn3D)
+    .onTapGesture {
+      rotateIn3D.toggle()
+    }
   }
 }
 
 struct UserCard_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView()
+    ProfileView(userViewController: UserViewController())
   }
 }

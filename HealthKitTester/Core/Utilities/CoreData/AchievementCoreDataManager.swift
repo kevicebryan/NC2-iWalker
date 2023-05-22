@@ -21,10 +21,15 @@ class AchievementCoreDataManager {
 
     do {
       achievement = try viewContext.fetch(request).first!
-      achievement.earned = true
-      achievement.earnedDate = Date()
-      coreDataManager.save()
-      print("success update achievement!")
+
+      if !achievement.earned {
+        achievement.earned = true
+        achievement.earnedDate = Date()
+        coreDataManager.save()
+        print("success update achievement!")
+      } else {
+        print("Achievement: \(achievementName) have been earned before")
+      }
     } catch {
       print("failed to fetch achievement: \(achievementName)")
       return
@@ -55,7 +60,7 @@ class AchievementCoreDataManager {
     let ach1 = Achievement(entity: achievmentEntity, insertInto: viewContext)
     ach1.name = "A Fresh Start"
     ach1.order = Int32(1)
-    ach1.caption = "This medal is what keeps you going!"
+    ach1.caption = "Nice job on completing your first daily challenge!"
     ach1.earned = false
 
     let ach2 = Achievement(entity: achievmentEntity, insertInto: viewContext)
@@ -67,7 +72,7 @@ class AchievementCoreDataManager {
     let ach3 = Achievement(entity: achievmentEntity, insertInto: viewContext)
     ach3.name = "Weekly Flash"
     ach3.order = Int32(3)
-    ach3.caption = "You walked for more than 50,000 steps in a week!"
+    ach3.caption = "You have completed the weekly challenge!"
     ach3.earned = false
 
     let ach4 = Achievement(entity: achievmentEntity, insertInto: viewContext)
@@ -79,7 +84,7 @@ class AchievementCoreDataManager {
     let ach5 = Achievement(entity: achievmentEntity, insertInto: viewContext)
     ach5.name = "Consisteny"
     ach5.order = Int32(5)
-    ach5.caption = "You have completed the weekly challenge!"
+    ach5.caption = "You have completed 10 weekly challenges, thats nuts!"
     ach5.earned = false
 
     let ach6 = Achievement(entity: achievmentEntity, insertInto: viewContext)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
   @StateObject var userViewController = UserViewController()
+  @StateObject var healthKitManager = HealthKitManager()
   @State var name: String = ""
   @State var stepGoal: Int = 10000
 
@@ -51,7 +52,7 @@ struct OnboardingView: View {
         // Next Button
 
         if userViewController.validateName(name: name) && userViewController.validateStepGoal(stepGoal: stepGoal) {
-          NavigationLink(destination: ContentView()) {
+          NavigationLink(destination: ContentView(healthKitManager: healthKitManager)) {
             VStack {
               Text("Start Walking")
                 .padding(.vertical, 10)

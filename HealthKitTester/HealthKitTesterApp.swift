@@ -11,11 +11,14 @@ import SwiftUI
 struct HealthKitTesterApp: App {
   @StateObject var coreDataManager = CoreDataManager.shared
   @StateObject var userViewController = UserViewController()
+  @StateObject var healthKitManager = HealthKitManager()
 
   var body: some Scene {
     WindowGroup {
       if userViewController.userExist() {
-        ContentView()
+        ContentView(healthKitManager: healthKitManager).onAppear {
+          healthKitManager.requestAuthorization()
+        }
 
         // MARK: if you need to reboot the app (delete everything and re-seed)
 

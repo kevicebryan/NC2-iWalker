@@ -11,4 +11,6 @@ import SwiftUI
 struct Theme {
   static let primary = Color(hex: "FF0091")
   static let secondary = Color(hex: "FF0001")
+
+  static let cardWidth = CGFloat(361)
 }

@@ -27,11 +27,15 @@
 		2DC1F67C2A19065B00F69FAC /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F67B2A19065B00F69FAC /* AchievementsViewController.swift */; };
 		2DC1F6842A1938FA00F69FAC /* DailyStepCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F6832A1938FA00F69FAC /* DailyStepCardView.swift */; };
 		2DC1F6862A19394B00F69FAC /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F6852A19394B00F69FAC /* UserCardView.swift */; };
+		2DC1F68E2A194B6600F69FAC /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F68D2A194B6600F69FAC /* ActivityViewController.swift */; };
 		2DCD577E2A17E5B1008297E6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD577D2A17E5B1008297E6 /* Theme.swift */; };
+		2DCE06E52A1A073D00BBCDB2 /* WeeklyChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06E42A1A073D00BBCDB2 /* WeeklyChallengeCard.swift */; };
+		2DCE06E72A1A075500BBCDB2 /* WeeklyCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06E62A1A075500BBCDB2 /* WeeklyCircleView.swift */; };
+		2DCE06EE2A1A164C00BBCDB2 /* WeeklyCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06ED2A1A164C00BBCDB2 /* WeeklyCardData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D7A83AE2A15ECEC00EC4ED7 /* HealthKitTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthKitTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7A83B12A15ECEC00EC4ED7 /* HealthKitTesterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitTesterApp.swift; sourceTree = "<group>"; };
 		2D7A83B32A15ECEC00EC4ED7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D7A83B52A15ECEE00EC4ED7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +57,11 @@
 		2DC1F67B2A19065B00F69FAC /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
 		2DC1F6832A1938FA00F69FAC /* DailyStepCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepCardView.swift; sourceTree = "<group>"; };
 		2DC1F6852A19394B00F69FAC /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		2DC1F68D2A194B6600F69FAC /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		2DCD577D2A17E5B1008297E6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2DCE06E42A1A073D00BBCDB2 /* WeeklyChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChallengeCard.swift; sourceTree = "<group>"; };
+		2DCE06E62A1A075500BBCDB2 /* WeeklyCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCircleView.swift; sourceTree = "<group>"; };
+		2DCE06ED2A1A164C00BBCDB2 /* WeeklyCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCardData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7A83B02A15ECEC00EC4ED7 /* HealthKitTester */,
+				2D7A83B52A15ECEE00EC4ED7 /* Assets.xcassets */,
 				2D7A83AF2A15ECEC00EC4ED7 /* Products */,
 				2DC1F6802A1937EE00F69FAC /* Frameworks */,
 			);
@@ -79,7 +88,7 @@
 		2D7A83AF2A15ECEC00EC4ED7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D7A83AE2A15ECEC00EC4ED7 /* HealthKitTester.app */,
+				2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,10 +96,10 @@
 		2D7A83B02A15ECEC00EC4ED7 /* HealthKitTester */ = {
 			isa = PBXGroup;
 			children = (
-				2D7A83B52A15ECEE00EC4ED7 /* Assets.xcassets */,
 				2D7A83BF2A15ECF800EC4ED7 /* HealthKitTester.entitlements */,
 				2D7A83B12A15ECEC00EC4ED7 /* HealthKitTesterApp.swift */,
 				2D7A83C42A16698800EC4ED7 /* Core */,
+				2DCE06EC2A1A163000BBCDB2 /* Model */,
 				2D7A83C02A15ED0100EC4ED7 /* Controller */,
 				2D7A83C12A15ED0600EC4ED7 /* Views */,
 				2D7A83B72A15ECEE00EC4ED7 /* Preview Content */,
@@ -111,6 +120,7 @@
 			children = (
 				2D7A83C22A15ED1200EC4ED7 /* HealthKitManager.swift */,
 				2DC1F6792A18EF8400F69FAC /* UserViewController.swift */,
+				2DC1F68D2A194B6600F69FAC /* ActivityViewController.swift */,
 				2DC1F67B2A19065B00F69FAC /* AchievementsViewController.swift */,
 			);
 			path = Controller;
@@ -119,10 +129,10 @@
 		2D7A83C12A15ED0600EC4ED7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2DC1F6752A18E96300F69FAC /* OnboardingView.swift */,
 				2D7A83B32A15ECEC00EC4ED7 /* ContentView.swift */,
 				2DA51A982A17742100BBD0B9 /* ActivityView.swift */,
 				2DA51A9A2A1787B300BBD0B9 /* ProfileView.swift */,
+				2DC1F6752A18E96300F69FAC /* OnboardingView.swift */,
 				2DCD57792A17E17D008297E6 /* Components */,
 			);
 			path = Views;
@@ -177,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				2DC1F6832A1938FA00F69FAC /* DailyStepCardView.swift */,
+				2DCE06E42A1A073D00BBCDB2 /* WeeklyChallengeCard.swift */,
+				2DCE06E62A1A075500BBCDB2 /* WeeklyCircleView.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -193,8 +205,8 @@
 		2DC1F6892A19399300F69FAC /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
-				2DC1F6712A18970300F69FAC /* AchievementBadgeView.swift */,
 				2DC1F6732A189B0900F69FAC /* AchievementsView.swift */,
+				2DC1F6712A18970300F69FAC /* AchievementBadgeView.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -202,8 +214,8 @@
 		2DCD57792A17E17D008297E6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2DC1F6882A19398600F69FAC /* Profile */,
 				2DC1F6872A19397700F69FAC /* Activity */,
+				2DC1F6882A19398600F69FAC /* Profile */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -216,12 +228,20 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		2DCE06EC2A1A163000BBCDB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2DCE06ED2A1A164C00BBCDB2 /* WeeklyCardData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D7A83AD2A15ECEC00EC4ED7 /* HealthKitTester */ = {
+		2D7A83AD2A15ECEC00EC4ED7 /* iWalker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D7A83BC2A15ECEE00EC4ED7 /* Build configuration list for PBXNativeTarget "HealthKitTester" */;
+			buildConfigurationList = 2D7A83BC2A15ECEE00EC4ED7 /* Build configuration list for PBXNativeTarget "iWalker" */;
 			buildPhases = (
 				2D7A83AA2A15ECEC00EC4ED7 /* Sources */,
 				2D7A83AB2A15ECEC00EC4ED7 /* Frameworks */,
@@ -231,11 +251,11 @@
 			);
 			dependencies = (
 			);
-			name = HealthKitTester;
+			name = iWalker;
 			packageProductDependencies = (
 			);
 			productName = HealthKitTester;
-			productReference = 2D7A83AE2A15ECEC00EC4ED7 /* HealthKitTester.app */;
+			productReference = 2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -263,13 +283,12 @@
 			);
 			mainGroup = 2D7A83A52A15ECEC00EC4ED7;
 			packageReferences = (
-				2DC1F67D2A19342300F69FAC /* XCRemoteSwiftPackageReference "layer-explosion" */,
 			);
 			productRefGroup = 2D7A83AF2A15ECEC00EC4ED7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D7A83AD2A15ECEC00EC4ED7 /* HealthKitTester */,
+				2D7A83AD2A15ECEC00EC4ED7 /* iWalker */,
 			);
 		};
 /* End PBXProject section */
@@ -291,21 +310,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCE06E52A1A073D00BBCDB2 /* WeeklyChallengeCard.swift in Sources */,
 				2DC1F67C2A19065B00F69FAC /* AchievementsViewController.swift in Sources */,
 				2DA51A992A17742100BBD0B9 /* ActivityView.swift in Sources */,
 				2DC1F67A2A18EF8400F69FAC /* UserViewController.swift in Sources */,
+				2DC1F68E2A194B6600F69FAC /* ActivityViewController.swift in Sources */,
 				2DC1F6722A18970300F69FAC /* AchievementBadgeView.swift in Sources */,
 				2D7A83B42A15ECEC00EC4ED7 /* ContentView.swift in Sources */,
 				2D7A83B22A15ECEC00EC4ED7 /* HealthKitTesterApp.swift in Sources */,
 				2D7A83C32A15ED1200EC4ED7 /* HealthKitManager.swift in Sources */,
 				2DA51A9B2A1787B300BBD0B9 /* ProfileView.swift in Sources */,
 				2DA51A8B2A17179600BBD0B9 /* AchievementCoreDataManager.swift in Sources */,
+				2DCE06EE2A1A164C00BBCDB2 /* WeeklyCardData.swift in Sources */,
 				2DC1F6862A19394B00F69FAC /* UserCardView.swift in Sources */,
 				2DC1F6742A189B0900F69FAC /* AchievementsView.swift in Sources */,
 				2D7A83C92A1669B400EC4ED7 /* CoreDataManager.swift in Sources */,
 				2DA51A8D2A1722C700BBD0B9 /* UserCoreDataManager.swift in Sources */,
 				2DA51A8F2A1722D600BBD0B9 /* RankCoreDataManager.swift in Sources */,
 				2D7A83C72A1669A500EC4ED7 /* Model.xcdatamodeld in Sources */,
+				2DCE06E72A1A075500BBCDB2 /* WeeklyCircleView.swift in Sources */,
 				2DA51A942A17241500BBD0B9 /* HelperFunctions.swift in Sources */,
 				2DC1F6762A18E96300F69FAC /* OnboardingView.swift in Sources */,
 				2DC1F6842A1938FA00F69FAC /* DailyStepCardView.swift in Sources */,
@@ -506,7 +529,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D7A83BC2A15ECEE00EC4ED7 /* Build configuration list for PBXNativeTarget "HealthKitTester" */ = {
+		2D7A83BC2A15ECEE00EC4ED7 /* Build configuration list for PBXNativeTarget "iWalker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D7A83BD2A15ECEE00EC4ED7 /* Debug */,
@@ -516,17 +539,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2DC1F67D2A19342300F69FAC /* XCRemoteSwiftPackageReference "layer-explosion" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/louis1001/layer-explosion";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		2D7A83C52A1669A500EC4ED7 /* Model.xcdatamodeld */ = {

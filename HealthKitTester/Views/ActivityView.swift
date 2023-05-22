@@ -8,19 +8,62 @@
 import SwiftUI
 
 struct ActivityView: View {
-  @StateObject var healthKitManager = HealthKitManager()
-  @StateObject var userViewController = UserViewController()
+  @ObservedObject var userViewController: UserViewController
+  @ObservedObject var healthKitManager: HealthKitManager
+  @ObservedObject var activityViewController: ActivityViewController
 
   var body: some View {
     VStack {
-      Text("\(userViewController.user?.name ?? "Your Name")")
-      Text("\(healthKitManager.stepCountToday)")
-    }
+      HStack {
+        Text("Hey \(userViewController.user?.name ?? "Your Name")!")
+          .font(.system(size: 36))
+          .fontWeight(.semibold)
+        Spacer()
+      }.padding(.horizontal).padding(.top, 12).padding(.bottom, 2)
+      ScrollView {
+        VStack {
+          // MARK: DAILY STEP COUNTER
+
+          DailyStepCardView(userViewController: userViewController, healthKitManager: healthKitManager, activityViewController: activityViewController)
+            .onAppear {
+              healthKitManager.fetchAllDatas()
+              activityViewController.updateStepPercentage(
+                steps: healthKitManager.stepCountToday,
+                goal: userViewController.getUserGoal()
+              )
+              activityViewController.updateProgressWidth()
+            }
+
+          // MARK: WEEKLY STEP TRACKER
+
+          HStack {
+            Text("Weekly Challenge")
+              .font(.title3)
+              .fontWeight(.semibold)
+            Spacer()
+          }.padding(.horizontal).padding(.top, 12).padding(.bottom, 2)
+
+          WeeklyChallengeCard(
+            userViewController: userViewController,
+            healthKitManager: healthKitManager,
+            activityViewController: activityViewController
+          ).onAppear {
+            activityViewController.updateWeeklyCardDatas(thisWeekSteps: healthKitManager.thisWeekSteps, goal: userViewController.getUserGoal())
+          }
+
+          Spacer()
+        }
+      }
+    }.padding(.top, 16)
   }
 }
 
 struct ActivityView_Previews: PreviewProvider {
   static var previews: some View {
-    ActivityView()
+    ActivityView(
+      userViewController: UserViewController(),
+      healthKitManager: HealthKitManager(),
+      activityViewController: ActivityViewController()
+    )
   }
 }

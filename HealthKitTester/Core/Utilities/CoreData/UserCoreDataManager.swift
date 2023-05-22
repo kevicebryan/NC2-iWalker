@@ -20,6 +20,7 @@ class UserCoreDataManager {
     user.name = name
     user.goal = Int32(goal)
     user.steps = Int32(0)
+    user.weekCompleted = Int32(0)
     setUserRank(user: user, rankName: "Rookie")
     coreDataManager.save()
   }

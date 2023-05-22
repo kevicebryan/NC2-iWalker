@@ -14,7 +14,7 @@ class UserViewController: ObservableObject {
   init() {
     if userExist() {
       user = userCoreDataManager.getUser() ?? nil
-      calcRemainingSteps()
+      calcRemainingStepsToRankUp()
     }
   }
 
@@ -29,6 +29,14 @@ class UserViewController: ObservableObject {
     user = userCoreDataManager.getUser()
   }
 
+  func getUserStepCount() -> Int {
+    return Int(user?.steps ?? 0)
+  }
+
+  func getUserGoal() -> Int {
+    return Int(user?.goal ?? 0)
+  }
+
   func createNewUser(name: String, goal: Int) {
     CoreDataManager.shared.freshRestart()
     userCoreDataManager.createUser(name: name, goal: goal)
@@ -40,13 +48,24 @@ class UserViewController: ObservableObject {
     user?.steps += Int32(steps)
 
     checkUserRankUp()
-    checkUserAchievements()
+    AchievementsViewController().checkUserAchievements()
 
     coreDataManager.save()
     refetchUserData()
   }
 
-  private func calcRemainingSteps() {
+  // TODO: this function runs Sunday 23:59, see if user completed the weekly challenge
+  func updateCompletedWeeks() {
+    var isCompleteWeek = false
+
+    if isCompleteWeek {
+      user!.weekCompleted += Int32(1)
+      coreDataManager.save()
+      remainingSteps = remainingSteps - 1
+    }
+  }
+
+  private func calcRemainingStepsToRankUp() {
     if user!.steps < 100_000 {
       remainingSteps = Int(100_000 - user!.steps)
     }
@@ -85,12 +104,6 @@ class UserViewController: ObservableObject {
       coreDataManager.save()
       refetchUserData()
     }
-  }
-
-  private func checkUserAchievements() {
-    let achievements = AchievementsViewConteroller().achievements
-
-    // TODO: Add the IFs for requirement to achieve the user's goal
   }
 
   func updateStepGoal(stepGoal: Int) {
