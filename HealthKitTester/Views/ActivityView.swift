@@ -26,7 +26,7 @@ struct ActivityView: View {
 
           DailyStepCardView(userViewController: userViewController, healthKitManager: healthKitManager, activityViewController: activityViewController)
             .onAppear {
-              healthKitManager.fetchAllDatas()
+//              healthKitManager.fetchAllDatas()
               activityViewController.updateStepPercentage(
                 steps: healthKitManager.stepCountToday,
                 goal: userViewController.getUserGoal()
@@ -47,8 +47,9 @@ struct ActivityView: View {
             userViewController: userViewController,
             healthKitManager: healthKitManager,
             activityViewController: activityViewController
-          ).onAppear {
-            activityViewController.updateWeeklyCardDatas(thisWeekSteps: healthKitManager.thisWeekSteps, goal: userViewController.getUserGoal())
+          )
+          .onAppear {
+            activityViewController.updateWeeklyCardDatas()
           }
 
           Spacer()

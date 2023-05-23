@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
-  @StateObject var userViewController = UserViewController()
-  @StateObject var healthKitManager = HealthKitManager()
+  @ObservedObject var userViewController: UserViewController
+  @ObservedObject var healthKitManager: HealthKitManager
   @State var name: String = ""
   @State var stepGoal: Int = 10000
 
@@ -52,7 +52,9 @@ struct OnboardingView: View {
         // Next Button
 
         if userViewController.validateName(name: name) && userViewController.validateStepGoal(stepGoal: stepGoal) {
-          NavigationLink(destination: ContentView(healthKitManager: healthKitManager)) {
+          NavigationLink(destination:
+            ContentView(healthKitManager: healthKitManager, userViewController: userViewController).navigationBarBackButtonHidden(true)
+          ) {
             VStack {
               Text("Start Walking")
                 .padding(.vertical, 10)
@@ -78,6 +80,7 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
   static var previews: some View {
-    OnboardingView()
+    OnboardingView(userViewController: UserViewController.shared,
+                   healthKitManager: HealthKitManager.shared)
   }
 }

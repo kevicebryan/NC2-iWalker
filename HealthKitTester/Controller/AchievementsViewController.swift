@@ -27,7 +27,7 @@ class AchievementsViewController: ObservableObject {
   }
 
   func checkUserAchievements() {
-    let user = UserViewController().user
+    let user = UserViewController.shared.user
 
     if user != nil {
       // TODO: Add the IFs for requirement to achieve the user's goal

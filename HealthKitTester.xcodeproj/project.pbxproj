@@ -20,6 +20,7 @@
 		2DA51A942A17241500BBD0B9 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA51A932A17241500BBD0B9 /* HelperFunctions.swift */; };
 		2DA51A992A17742100BBD0B9 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA51A982A17742100BBD0B9 /* ActivityView.swift */; };
 		2DA51A9B2A1787B300BBD0B9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA51A9A2A1787B300BBD0B9 /* ProfileView.swift */; };
+		2DA82E122A1CC0F100D4AFCC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA82E112A1CC0F100D4AFCC /* NotificationController.swift */; };
 		2DC1F6722A18970300F69FAC /* AchievementBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F6712A18970300F69FAC /* AchievementBadgeView.swift */; };
 		2DC1F6742A189B0900F69FAC /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F6732A189B0900F69FAC /* AchievementsView.swift */; };
 		2DC1F6762A18E96300F69FAC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1F6752A18E96300F69FAC /* OnboardingView.swift */; };
@@ -50,6 +51,7 @@
 		2DA51A932A17241500BBD0B9 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2DA51A982A17742100BBD0B9 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		2DA51A9A2A1787B300BBD0B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2DA82E112A1CC0F100D4AFCC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		2DC1F6712A18970300F69FAC /* AchievementBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementBadgeView.swift; sourceTree = "<group>"; };
 		2DC1F6732A189B0900F69FAC /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		2DC1F6752A18E96300F69FAC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				2DC1F6792A18EF8400F69FAC /* UserViewController.swift */,
 				2DC1F68D2A194B6600F69FAC /* ActivityViewController.swift */,
 				2DC1F67B2A19065B00F69FAC /* AchievementsViewController.swift */,
+				2DA82E112A1CC0F100D4AFCC /* NotificationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA82E122A1CC0F100D4AFCC /* NotificationController.swift in Sources */,
 				2DCE06E52A1A073D00BBCDB2 /* WeeklyChallengeCard.swift in Sources */,
 				2DC1F67C2A19065B00F69FAC /* AchievementsViewController.swift in Sources */,
 				2DA51A992A17742100BBD0B9 /* ActivityView.swift in Sources */,

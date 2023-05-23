@@ -48,6 +48,6 @@ struct AchievementBadgeView: View {
 
 struct AchievementBadgeView_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView(userViewController: UserViewController())
+    ProfileView(userViewController: UserViewController(), healthKitManager: HealthKitManager())
   }
 }

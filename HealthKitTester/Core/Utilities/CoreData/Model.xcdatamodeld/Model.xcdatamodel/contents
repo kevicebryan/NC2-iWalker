@@ -2,6 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Achievement" representedClassName="Achievement" syncable="YES" codeGenerationType="class">
         <attribute name="caption" optional="YES" attributeType="String"/>
+        <attribute name="colorA" optional="YES" attributeType="String"/>
+        <attribute name="colorB" optional="YES" attributeType="String"/>
+        <attribute name="colorC" optional="YES" attributeType="String"/>
+        <attribute name="colorD" optional="YES" attributeType="String"/>
         <attribute name="earned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="earnedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>

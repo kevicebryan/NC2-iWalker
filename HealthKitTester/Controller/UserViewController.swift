@@ -18,15 +18,109 @@ class UserViewController: ObservableObject {
     }
   }
 
+  static let shared = UserViewController()
+
   let coreDataManager = CoreDataManager.shared
   let userCoreDataManager = UserCoreDataManager()
   let rankCoreDataManager = RankCoreDataManager()
 
   @Published var user: User? = nil
   @Published var remainingSteps: Int = 0
+  let userDefault = UserDefaults.standard
+
+  func createNewUser(name: String, goal: Int) {
+    CoreDataManager.shared.freshRestart()
+    userCoreDataManager.createUser(name: name, goal: goal)
+
+    userDefault.set(23, forKey: "recordedDate")
+    userDefault.set(false, forKey: "weekUpdated")
+    userDefault.synchronize()
+
+    print("Successfully added new user!")
+    refetchUserData()
+  }
+
+  func updateStatsToCoreData() {
+    print("\n***********************************************")
+
+    let today = dateToInteger(date: Date())
+    let recordedDate = userDefault.integer(forKey: "recordedDate")
+
+    print("today: \(today)")
+    print("recordedDate: \(recordedDate)")
+
+    var lastRecordedSteps = 0
+
+    // MARK: update Lifetime Steps
+
+    if today != recordedDate {
+      // FETCH recordedDate steps
+
+      if recordedDate == 0 {
+        userDefault.set(today, forKey: "recordedDate")
+        return
+      }
+
+      lastRecordedSteps = HealthKitManager.shared.stepCountYesterday
+
+      print("LAST RECORDED STEPS: \(lastRecordedSteps)")
+
+
+
+      // MARK: update Daily Completions
+
+      if lastRecordedSteps >= user?.goal ?? 10_000 {
+        user?.completions += 1
+        print("COMPLEITONS +1 = \(user?.completions ?? 0)")
+      }
+      
+      // Push to Core Data
+      appendUserSteps(steps: lastRecordedSteps)
+
+      coreDataManager.save()
+
+      // Update recoredDate in UserDefault
+      userDefault.set(today, forKey: "recordedDate")
+      userDefault.synchronize()
+//      print("set recordedDate to \(today)")
+//      print("LIFETIME STEPS: \(user?.steps ?? 0)")
+      refetchUserData()
+    }
+
+    // MARK: update Weekly Challenge Completed
+
+    let todaysWeekDay = Calendar.current.component(.weekday, from: Date())
+    let weekUpdated = userDefault.bool(forKey: "weekUpdated")
+
+    // if today is Sunday
+    if todaysWeekDay == 1 && weekUpdated {
+      userDefault.set(false, forKey: "weekUpdated")
+    }
+
+    // if today is Saturday
+    if todaysWeekDay == 7 && !weekUpdated {
+      // Check apakah di Week ini semua daily udh mencapai Goal, kalau udh maka kita increment user's week Completed
+
+      let isWeekCompleted = checkIfWeekCompleted()
+
+      if isWeekCompleted {
+        user?.weekCompleted += 1
+        coreDataManager.save()
+        refetchUserData()
+
+        print("USER's Weekly Challenge Completions:  to \(user?.weekCompleted ?? 0)")
+      }
+
+      // set weekUpdate ke true
+      userDefault.set(true, forKey: "weekUpdated")
+    }
+
+    print("***********************************************\n")
+  }
 
   func refetchUserData() {
     user = userCoreDataManager.getUser()
+    calcRemainingStepsToRankUp()
   }
 
   func getUserStepCount() -> Int {
@@ -37,14 +131,47 @@ class UserViewController: ObservableObject {
     return Int(user?.goal ?? 0)
   }
 
-  func createNewUser(name: String, goal: Int) {
-    CoreDataManager.shared.freshRestart()
-    userCoreDataManager.createUser(name: name, goal: goal)
-    print("Successfully added new user!")
+  func updateStepGoal(stepGoal: Int) {
+    user?.goal = Int32(stepGoal)
+    coreDataManager.save()
+    refetchUserData()
   }
 
-  // TODO: this function will run daily at 23.59 and add the steps to user steps in coreData
-  func appendUserSteps(steps: Int) {
+  func userExist() -> Bool {
+    let users = userCoreDataManager.getAllUser()
+    if users.count == 0 {
+      return false
+    }
+    return true
+  }
+
+  func validateName(name: String) -> Bool {
+    if name.count < 1 { return false }
+    return true
+  }
+
+  func validateStepGoal(stepGoal: Int) -> Bool {
+    print("validating step goal...")
+    if stepGoal < 5_000 {
+      print("invalid step goal!")
+      return false
+    }
+    print("VALID step goal!")
+    return true
+  }
+
+  private func checkIfWeekCompleted() -> Bool {
+    let thisWeeksDatas = ActivityViewController.shared.weeklyCardDatas
+    for dailyData in thisWeeksDatas {
+      if !dailyData.isCompleted {
+        // kalo ada 1 tanggal yg g complete maka return false
+        return false
+      }
+    }
+    return true
+  }
+
+  private func appendUserSteps(steps: Int) {
     user?.steps += Int32(steps)
 
     checkUserRankUp()
@@ -52,17 +179,6 @@ class UserViewController: ObservableObject {
 
     coreDataManager.save()
     refetchUserData()
-  }
-
-  // TODO: this function runs Sunday 23:59, see if user completed the weekly challenge
-  func updateCompletedWeeks() {
-    var isCompleteWeek = false
-
-    if isCompleteWeek {
-      user!.weekCompleted += Int32(1)
-      coreDataManager.save()
-      remainingSteps = remainingSteps - 1
-    }
   }
 
   private func calcRemainingStepsToRankUp() {
@@ -104,34 +220,5 @@ class UserViewController: ObservableObject {
       coreDataManager.save()
       refetchUserData()
     }
-  }
-
-  func updateStepGoal(stepGoal: Int) {
-    user?.goal = Int32(stepGoal)
-    coreDataManager.save()
-    refetchUserData()
-  }
-
-  func userExist() -> Bool {
-    let users = userCoreDataManager.getAllUser()
-    if users.count == 0 {
-      return false
-    }
-    return true
-  }
-
-  func validateName(name: String) -> Bool {
-    if name.count < 1 { return false }
-    return true
-  }
-
-  func validateStepGoal(stepGoal: Int) -> Bool {
-    print("validating step goal...")
-    if stepGoal < 1_000 {
-      print("invalid step goal!")
-      return false
-    }
-    print("VALID step goal!")
-    return true
   }
 }

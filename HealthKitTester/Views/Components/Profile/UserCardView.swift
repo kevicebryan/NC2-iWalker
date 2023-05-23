@@ -9,12 +9,16 @@ import SwiftUI
 
 struct UserCardView: View {
   @ObservedObject var userViewController: UserViewController
+
+  @ObservedObject var healthKitManager: HealthKitManager
+
   @State var rotateIn3D = false
 
   let user: User?
 
-  init(userViewController: UserViewController) {
+  init(userViewController: UserViewController, healthKitManager: HealthKitManager) {
     self.userViewController = userViewController
+    self.healthKitManager = healthKitManager
     self.user = userViewController.user
   }
 
@@ -28,7 +32,18 @@ struct UserCardView: View {
           .foregroundColor(Color(hex: "\(user?.rank?.color ?? "3434D7")"))
           .fontWeight(.bold)
           .font(.system(size: 48))
-        Text("Walk \(userViewController.remainingSteps) more steps to rank up!").font(.caption).foregroundColor(.gray)
+
+        Text("Lifetime steps of \(user?.steps ?? 0)")
+          .font(.footnote).fontWeight(.light).foregroundColor(.gray)
+
+        if userViewController.remainingSteps - healthKitManager.stepCountToday > 0 {
+          Text("Walk \(userViewController.remainingSteps - healthKitManager.stepCountToday) more steps to rank up!")
+            .font(.caption)
+            .foregroundColor(.gray)
+            .fontWeight(.ultraLight)
+        } else {
+          Text("Keep on walking!").font(.caption).foregroundColor(.gray)
+        }
         Spacer()
       }.padding(.leading, 12).padding(.vertical, 20)
 
@@ -69,6 +84,6 @@ struct UserCardView: View {
 
 struct UserCard_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView(userViewController: UserViewController())
+    ProfileView(userViewController: UserViewController(), healthKitManager: HealthKitManager())
   }
 }

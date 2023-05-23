@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
   @StateObject var achievementViewController = AchievementsViewController()
   @ObservedObject var userViewController: UserViewController
+  @ObservedObject var healthKitManager: HealthKitManager
 
   @State var isEditing = false
   @State var stepGoal: Int = 0
@@ -22,7 +23,8 @@ struct ProfileView: View {
         Text("Profile").font(.title2).fontWeight(.semibold)
         Spacer()
       }.padding(.horizontal).padding(.top, 12).padding(.bottom, 2)
-      UserCardView(userViewController: userViewController)
+
+      UserCardView(userViewController: userViewController, healthKitManager: healthKitManager)
       ScrollView(showsIndicators: false) {
         VStack {
           // Edit Step Goal
@@ -110,6 +112,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView(userViewController: UserViewController())
+    ProfileView(userViewController: UserViewController(), healthKitManager: HealthKitManager())
   }
 }

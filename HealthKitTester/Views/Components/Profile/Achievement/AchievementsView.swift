@@ -84,6 +84,6 @@ struct AchievementsView: View {
 
 struct AchievementsView_Previews: PreviewProvider {
   static var previews: some View {
-    ProfileView(userViewController: UserViewController())
+    ProfileView(userViewController: UserViewController.shared, healthKitManager: HealthKitManager.shared)
   }
 }

@@ -9,19 +9,18 @@ import Foundation
 import SwiftUI
 
 class ActivityViewController: ObservableObject {
+  static let shared = ActivityViewController()
+
   @Published var stepPercentage: Double = 0.0
   @Published var progressWidth: CGFloat = 0.0
 
   init() {
     updateStepPercentage(
-      steps: HealthKitManager().stepCountToday,
-      goal: UserViewController().getUserGoal())
+      steps: HealthKitManager.shared.stepCountToday,
+      goal: UserViewController.shared.getUserGoal())
 
     updateProgressWidth()
-
-    updateWeeklyCardDatas(
-      thisWeekSteps: HealthKitManager().thisWeekSteps,
-      goal: UserViewController().getUserGoal())
+    updateWeeklyCardDatas()
   }
 
   let motivationQuotes = ["Let's Start Walking!",
@@ -30,13 +29,13 @@ class ActivityViewController: ObservableObject {
                           "Great Job!"]
 
   @Published var weeklyCardDatas = [
-    WeeklyCardData(dayLabel: "MON", isCompleted: true, isDayPassed: true, isToday: false, steps: 0, weekDay: 1),
-    WeeklyCardData(dayLabel: "TUE", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 2),
-    WeeklyCardData(dayLabel: "WED", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 3),
-    WeeklyCardData(dayLabel: "THU", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 4),
-    WeeklyCardData(dayLabel: "FRI", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 5),
-    WeeklyCardData(dayLabel: "SAT", isCompleted: false, isDayPassed: false, isToday: true, steps: 0, weekDay: 6),
-    WeeklyCardData(dayLabel: "SUN", isCompleted: false, isDayPassed: false, isToday: false, steps: 0, weekDay: 7),
+    WeeklyCardData(dayLabel: "SUN", isCompleted: false, isDayPassed: false, isToday: false, steps: 0, weekDay: 1),
+    WeeklyCardData(dayLabel: "MON", isCompleted: true, isDayPassed: true, isToday: false, steps: 0, weekDay: 2),
+    WeeklyCardData(dayLabel: "TUE", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 3),
+    WeeklyCardData(dayLabel: "WED", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 4),
+    WeeklyCardData(dayLabel: "THU", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 5),
+    WeeklyCardData(dayLabel: "FRI", isCompleted: false, isDayPassed: true, isToday: false, steps: 0, weekDay: 6),
+    WeeklyCardData(dayLabel: "SAT", isCompleted: false, isDayPassed: false, isToday: true, steps: 0, weekDay: 7),
   ]
 
   func updateProgressWidth() {
@@ -45,7 +44,7 @@ class ActivityViewController: ObservableObject {
   }
 
   func updateStepPercentage(steps: Int, goal: Int) {
-    print("==> Steps: \(steps)")
+//    print("==> Steps: \(steps)")
     if steps > 0 {
       stepPercentage = Double(Double(steps) / Double(goal))
     } else {
@@ -55,17 +54,23 @@ class ActivityViewController: ObservableObject {
     if stepPercentage >= 1.0 {
       stepPercentage = 1.0
     }
-    print("==> ACV Steps%: \(stepPercentage)")
+//    print("==> ACV Steps%: \(stepPercentage)")
   }
 
-  func updateWeeklyCardDatas(thisWeekSteps: [Int: Int], goal: Int) {
+  func updateWeeklyCardDatas() {
+    let goal = UserViewController.shared.getUserGoal()
+    let thisWeekSteps = HealthKitManager.shared.thisWeekSteps
+
     let now = Date()
     let calendar = Calendar.current
     let today = calendar.component(.weekday, from: now)
 
+//    print("()()()()() ATTEMPTING TO UPDATE WEEKLY CARD DATA")
+
     for (day, steps) in thisWeekSteps {
       let idx = day - 1
       weeklyCardDatas[idx].steps = steps
+//      print(">> DAY [\(idx)] steps: \(weeklyCardDatas[idx].steps)")
 
       // check if goal completed
       if steps >= goal {
@@ -86,8 +91,8 @@ class ActivityViewController: ObservableObject {
       } else {
         weeklyCardDatas[idx].isDayPassed = false
       }
-      print("THIS WEEK's DATA for \(weeklyCardDatas[idx].dayLabel):")
-      print("\(weeklyCardDatas[idx])")
+//      print("THIS WEEK's DATA for \(weeklyCardDatas[idx].dayLabel):")
+//      print("\(weeklyCardDatas[idx])")
     }
   }
 
