@@ -15,10 +15,20 @@ struct AchievementBadgeView: View {
       if achievement.earned {
         ZStack {
           Circle()
-            .fill(RadialGradient(colors: [.pink, .white], center: .center, startRadius: 0, endRadius: 32))
+            .fill(RadialGradient(colors: [
+              Color(hex: "\(achievement.colorA!)"),
+              Color(hex: "\(achievement.colorB!)"),
+//              .pink,
+//              .white,
+            ], center: .center, startRadius: 0, endRadius: 32))
             .frame(width: 60, height: 60)
           Circle()
-            .fill(RadialGradient(colors: [.green, .white], center: .center, startRadius: 0, endRadius: 32))
+            .fill(RadialGradient(colors: [
+              Color(hex: "\(achievement.colorC!)"),
+              Color(hex: "\(achievement.colorD!)"),
+//              .green,
+//              .white,
+            ], center: .center, startRadius: 0, endRadius: 32))
             .frame(width: 30, height: 30)
         }
       }

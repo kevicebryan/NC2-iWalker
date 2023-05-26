@@ -37,11 +37,17 @@ class AchievementsViewController: ObservableObject {
       if user!.steps >= Int32(1_000_000) {
         AchievementCoreDataManager().earnAchievement(achievementName: "Olympiade")
       }
+      if user!.steps >= Int32(100_000_000) {
+        AchievementCoreDataManager().earnAchievement(achievementName: "Forrest Gump")
+      }
       if user!.weekCompleted >= Int32(32) {
         AchievementCoreDataManager().earnAchievement(achievementName: "Consistency")
       }
       if user!.weekCompleted >= Int32(1) {
         AchievementCoreDataManager().earnAchievement(achievementName: "Weekly Flash")
+      }
+      if user!.weekCompleted >= Int32(100) {
+        AchievementCoreDataManager().earnAchievement(achievementName: "Cornfield Chaser")
       }
       if user!.completions >= Int32(1) {
         AchievementCoreDataManager().earnAchievement(achievementName: "A Fresh Start")

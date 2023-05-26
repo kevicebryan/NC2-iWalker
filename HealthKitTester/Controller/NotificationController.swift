@@ -38,8 +38,26 @@ class NotificationController: ObservableObject {
     let stepPercentage = ActivityViewController.shared.stepPercentage
 
     if stepPercentage < 1 {
-      content.title = "Keep on Walking"
-      content.subtitle = "\(Int(ActivityViewController.shared.stepPercentage * 100.0))% towards reaching your goal!"
+      if hour == 6 {
+        content.title = "Get your morning walk started"
+        content.subtitle = "Morning walks are a good way to get your dayt started!"
+      }
+      if hour == 10 {
+        content.title = "Get your daily steps up"
+        content.subtitle = "You got this, we believe you can reach your daily step goal ."
+
+      }
+      if hour == 14 {
+        content.title = "Afternoon walk time"
+        content.subtitle = "Go out there and get your steps up!"
+
+      }
+      if hour == 18 {
+        content.title = "Time for a night walk"
+        content.subtitle = "There is no wrong with completing your daily step goal at night."
+
+      }
+
       content.sound = UNNotificationSound.default
 
       var datComp = DateComponents()

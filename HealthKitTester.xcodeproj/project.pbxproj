@@ -33,9 +33,41 @@
 		2DCE06E52A1A073D00BBCDB2 /* WeeklyChallengeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06E42A1A073D00BBCDB2 /* WeeklyChallengeCard.swift */; };
 		2DCE06E72A1A075500BBCDB2 /* WeeklyCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06E62A1A075500BBCDB2 /* WeeklyCircleView.swift */; };
 		2DCE06EE2A1A164C00BBCDB2 /* WeeklyCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE06ED2A1A164C00BBCDB2 /* WeeklyCardData.swift */; };
+		2DF377692A1DD4A500F18BA9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF377682A1DD4A500F18BA9 /* WidgetKit.framework */; };
+		2DF3776B2A1DD4A500F18BA9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF3776A2A1DD4A500F18BA9 /* SwiftUI.framework */; };
+		2DF3776E2A1DD4A500F18BA9 /* iWalkerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3776D2A1DD4A500F18BA9 /* iWalkerWidgetBundle.swift */; };
+		2DF377702A1DD4A500F18BA9 /* iWalkerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF3776F2A1DD4A500F18BA9 /* iWalkerWidget.swift */; };
+		2DF377722A1DD4A600F18BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF377712A1DD4A600F18BA9 /* Assets.xcassets */; };
+		2DF377762A1DD4A600F18BA9 /* iWalkerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2DF377672A1DD4A500F18BA9 /* iWalkerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2DF377742A1DD4A600F18BA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7A83A62A15ECEC00EC4ED7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DF377662A1DD4A500F18BA9;
+			remoteInfo = iWalkerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2DF377772A1DD4A600F18BA9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2DF377762A1DD4A600F18BA9 /* iWalkerWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2D12C09F2A1E198600008BA8 /* iWalkerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iWalkerWidgetExtension.entitlements; sourceTree = "<group>"; };
+		2D12C0A02A1E19F300008BA8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7A83B12A15ECEC00EC4ED7 /* HealthKitTesterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitTesterApp.swift; sourceTree = "<group>"; };
 		2D7A83B32A15ECEC00EC4ED7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +77,7 @@
 		2D7A83C22A15ED1200EC4ED7 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		2D7A83C62A1669A500EC4ED7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2D7A83C82A1669B400EC4ED7 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2D8C117B2A208FCC006D4EC7 /* iWalker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iWalker-Info.plist"; sourceTree = "<group>"; };
 		2DA51A8A2A17179600BBD0B9 /* AchievementCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCoreDataManager.swift; sourceTree = "<group>"; };
 		2DA51A8C2A1722C700BBD0B9 /* UserCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreDataManager.swift; sourceTree = "<group>"; };
 		2DA51A8E2A1722D600BBD0B9 /* RankCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCoreDataManager.swift; sourceTree = "<group>"; };
@@ -64,6 +97,13 @@
 		2DCE06E42A1A073D00BBCDB2 /* WeeklyChallengeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyChallengeCard.swift; sourceTree = "<group>"; };
 		2DCE06E62A1A075500BBCDB2 /* WeeklyCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCircleView.swift; sourceTree = "<group>"; };
 		2DCE06ED2A1A164C00BBCDB2 /* WeeklyCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCardData.swift; sourceTree = "<group>"; };
+		2DF377672A1DD4A500F18BA9 /* iWalkerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iWalkerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DF377682A1DD4A500F18BA9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2DF3776A2A1DD4A500F18BA9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2DF3776D2A1DD4A500F18BA9 /* iWalkerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWalkerWidgetBundle.swift; sourceTree = "<group>"; };
+		2DF3776F2A1DD4A500F18BA9 /* iWalkerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWalkerWidget.swift; sourceTree = "<group>"; };
+		2DF377712A1DD4A600F18BA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DF377732A1DD4A600F18BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,14 +114,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2DF377642A1DD4A500F18BA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF3776B2A1DD4A500F18BA9 /* SwiftUI.framework in Frameworks */,
+				2DF377692A1DD4A500F18BA9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2D7A83A52A15ECEC00EC4ED7 = {
 			isa = PBXGroup;
 			children = (
+				2D8C117B2A208FCC006D4EC7 /* iWalker-Info.plist */,
+				2D12C09F2A1E198600008BA8 /* iWalkerWidgetExtension.entitlements */,
 				2D7A83B02A15ECEC00EC4ED7 /* HealthKitTester */,
 				2D7A83B52A15ECEE00EC4ED7 /* Assets.xcassets */,
+				2DF3776C2A1DD4A500F18BA9 /* iWalkerWidget */,
 				2D7A83AF2A15ECEC00EC4ED7 /* Products */,
 				2DC1F6802A1937EE00F69FAC /* Frameworks */,
 			);
@@ -91,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */,
+				2DF377672A1DD4A500F18BA9 /* iWalkerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +173,7 @@
 		2D7A83C02A15ED0100EC4ED7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2D12C0A02A1E19F300008BA8 /* WidgetKit.framework */,
 				2D7A83C22A15ED1200EC4ED7 /* HealthKitManager.swift */,
 				2DC1F6792A18EF8400F69FAC /* UserViewController.swift */,
 				2DC1F68D2A194B6600F69FAC /* ActivityViewController.swift */,
@@ -182,6 +236,8 @@
 		2DC1F6802A1937EE00F69FAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DF377682A1DD4A500F18BA9 /* WidgetKit.framework */,
+				2DF3776A2A1DD4A500F18BA9 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +295,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2DF3776C2A1DD4A500F18BA9 /* iWalkerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2DF3776F2A1DD4A500F18BA9 /* iWalkerWidget.swift */,
+				2DF3776D2A1DD4A500F18BA9 /* iWalkerWidgetBundle.swift */,
+				2DF377712A1DD4A600F18BA9 /* Assets.xcassets */,
+				2DF377732A1DD4A600F18BA9 /* Info.plist */,
+			);
+			path = iWalkerWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,10 +316,12 @@
 				2D7A83AA2A15ECEC00EC4ED7 /* Sources */,
 				2D7A83AB2A15ECEC00EC4ED7 /* Frameworks */,
 				2D7A83AC2A15ECEC00EC4ED7 /* Resources */,
+				2DF377772A1DD4A600F18BA9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2DF377752A1DD4A600F18BA9 /* PBXTargetDependency */,
 			);
 			name = iWalker;
 			packageProductDependencies = (
@@ -261,6 +330,23 @@
 			productReference = 2D7A83AE2A15ECEC00EC4ED7 /* iWalker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2DF377662A1DD4A500F18BA9 /* iWalkerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DF3777A2A1DD4A600F18BA9 /* Build configuration list for PBXNativeTarget "iWalkerWidgetExtension" */;
+			buildPhases = (
+				2DF377632A1DD4A500F18BA9 /* Sources */,
+				2DF377642A1DD4A500F18BA9 /* Frameworks */,
+				2DF377652A1DD4A500F18BA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iWalkerWidgetExtension;
+			productName = iWalkerWidgetExtension;
+			productReference = 2DF377672A1DD4A500F18BA9 /* iWalkerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -268,11 +354,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					2D7A83AD2A15ECEC00EC4ED7 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					2DF377662A1DD4A500F18BA9 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -292,6 +381,7 @@
 			projectRoot = "";
 			targets = (
 				2D7A83AD2A15ECEC00EC4ED7 /* iWalker */,
+				2DF377662A1DD4A500F18BA9 /* iWalkerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -303,6 +393,14 @@
 			files = (
 				2D7A83B92A15ECEE00EC4ED7 /* Preview Assets.xcassets in Resources */,
 				2D7A83B62A15ECEE00EC4ED7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DF377652A1DD4A500F18BA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF377722A1DD4A600F18BA9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +438,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2DF377632A1DD4A500F18BA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF3776E2A1DD4A500F18BA9 /* iWalkerWidgetBundle.swift in Sources */,
+				2DF377702A1DD4A500F18BA9 /* iWalkerWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2DF377752A1DD4A600F18BA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DF377662A1DD4A500F18BA9 /* iWalkerWidgetExtension */;
+			targetProxy = 2DF377742A1DD4A600F18BA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2D7A83BA2A15ECEE00EC4ED7 /* Debug */ = {
@@ -460,6 +575,7 @@
 		2D7A83BD2A15ECEE00EC4ED7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -470,6 +586,7 @@
 				DEVELOPMENT_TEAM = DVSPNNP5A3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iWalker-Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To update the health data and show it in the application.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -483,15 +600,19 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kevice.HealthKitTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2D7A83BE2A15ECEE00EC4ED7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -502,6 +623,7 @@
 				DEVELOPMENT_TEAM = DVSPNNP5A3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iWalker-Info.plist";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To read the health data and show it in the application.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To update the health data and show it in the application.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -515,6 +637,65 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kevice.HealthKitTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2DF377782A1DD4A600F18BA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iWalkerWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVSPNNP5A3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iWalkerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iWalkerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kevice.HealthKitTester.iWalkerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2DF377792A1DD4A600F18BA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iWalkerWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVSPNNP5A3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iWalkerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iWalkerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kevice.HealthKitTester.iWalkerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -538,6 +719,15 @@
 			buildConfigurations = (
 				2D7A83BD2A15ECEE00EC4ED7 /* Debug */,
 				2D7A83BE2A15ECEE00EC4ED7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DF3777A2A1DD4A600F18BA9 /* Build configuration list for PBXNativeTarget "iWalkerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DF377782A1DD4A600F18BA9 /* Debug */,
+				2DF377792A1DD4A600F18BA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import WidgetKit
 
 class HealthKitManager: ObservableObject {
   var healthStore = HKHealthStore()
@@ -33,7 +34,7 @@ class HealthKitManager: ObservableObject {
     let toReads = Set([
       HKObjectType.quantityType(forIdentifier: .stepCount)!,
       HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
-      HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+//      HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
     ])
     guard HKHealthStore.isHealthDataAvailable() else {
       print("health data not available!")
@@ -61,6 +62,10 @@ class HealthKitManager: ObservableObject {
     print("\(stepCountToday) steps today")
     print("\(caloriesBurnedToday) calories today")
     print("////////////////////////////////////////")
+    
+    UserDefaults(suiteName: "group.iWalker")?.set(stepCountToday, forKey: "widgetStep")
+    
+    WidgetCenter.shared.reloadAllTimelines()
   }
 
   func readStepCountYesterday() {

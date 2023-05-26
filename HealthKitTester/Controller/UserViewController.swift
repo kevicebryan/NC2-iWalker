@@ -32,7 +32,7 @@ class UserViewController: ObservableObject {
     CoreDataManager.shared.freshRestart()
     userCoreDataManager.createUser(name: name, goal: goal)
 
-    userDefault.set(23, forKey: "recordedDate")
+    userDefault.set(0, forKey: "recordedDate")
     userDefault.set(false, forKey: "weekUpdated")
     userDefault.synchronize()
 

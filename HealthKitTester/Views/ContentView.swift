@@ -9,6 +9,8 @@ import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
+  @Environment(\.scenePhase) var scenePhase
+
   @ObservedObject var healthKitManager: HealthKitManager
   @ObservedObject var userViewController: UserViewController
 
@@ -36,6 +38,11 @@ struct ContentView: View {
     }.accentColor(Theme.primary).onAppear {
       notificationController.askUserPermission()
       UIApplication.shared.applicationIconBadgeNumber = 0
+    }.onChange(of: scenePhase) { newPhase in
+      if newPhase == .active {
+        healthKitManager.requestAuthorization()
+        userViewController.refetchUserData()
+      }
     }
   }
 }
